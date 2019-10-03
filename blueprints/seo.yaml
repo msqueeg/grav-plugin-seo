@@ -105,6 +105,78 @@ form:
                       type: display
                       markdown: true
                       content: '<a class="button" id="validate" onclick="validatepage()"><i class="fa fa-check"></i>Validate this page microdata</a>'
+                    header.jobpost_condition:
+                      type: conditional
+                      condition: "config.plugins.seo.jobpost? 'true' : 'false'"
+                      fields:
+                        header.jobpostfieldset:
+                          type: fieldset
+                          icon: briefcase
+                          title: JobPosting Microdata
+                          collapsed: true
+                          collapsible: true
+                          fields:
+                            header.jobpostenabled:
+                              type: toggle
+                              highlight: 1
+                              label: PLUGIN_SEO.ADD_JOBPOST_MICRODATA
+                              default: 0
+                              options:
+                                1: PLUGIN_ADMIN.YES
+                                0: PLUGIN_ADMIN.NO
+                              validate:
+                                type: bool
+                            header.jobpost.title:
+                              type: text
+                              label: PLUGIN_SEO.JOBPOST_TITLE
+                              placeholder: PLUGIN_SEO.JOBPOST_PLACEHOLDER
+                            header.jobpost.description:
+                              type: textarea
+                              label: PLUGIN_SEO.JOBPOST_DESCRIPTION
+                              placeholder: PLUGIN_SEO.JOBPOST_DESC_PLACEHOLDER
+                              field_classes: togglejobpost
+                            header.jobpost.dateposted:
+                              type: datetime
+                              label: PLUGIN_SEO.DATE_POSTED
+                            header.jobpost.validthrough:
+                              type: datetime
+                              label: PLUGIN_SEO.VALID_THROUGH
+                            header.jobpost.employmenttype:
+                              type: select
+                              options:
+                                'full-time': PLUGIN_SEO.JOBPOST_FULLTIME
+                                'part-time': PLUGIN_SEO.JOBPOST_PARTTIME
+                                'seasonal': PLUGIN_SEO.JOBPOST_SEASONAL
+                                'contract': PLUGIN_SEO.JOBPOST_CONTRACT
+                              field_classes: employmenttype
+                            header.jobpost.hiringorg:
+                              type: select
+                              options: 
+                                'hardware' : PLUGIN_SEO.JOBPOST_HH
+                                'kitchen' : PLUGIN_SEO.JOBPOST_HK
+                                'collect' : PLUGIN_SEO.JOBPOST_HC
+                                'market' : PLUGIN_SEO.JOBPOST_HMP
+                              field_classes: hiringorg
+                            header.jobpost.joblocation:
+                              type: select
+                              options:
+                                'hardware' : PLUGIN_SEO.JOBPOST_HH
+                                'kitchen' : PLUGIN_SEO.JOBPOST_HK
+                                'collect' : PLUGIN_SEO.JOBPOST_HC
+                                'market' : PLUGIN_SEO.JOBPOST_HMP
+                              field_classes: joblocation
+                            header.jobpost.basesalaryrate:
+                              type: select
+                              options:
+                                'HOUR': PLUGIN_SEO.JOBPOST_HOUR
+                                'YEAR': PLUGIN_SEO.JOBPOST_YEAR
+                              field_classes: basesalaryrate
+                            header.jobpost.basesalaryamnt:
+                              type: text
+                              label: PLUGIN_SEO.JOBPOST_AMNT
+                            header.jobpost.jobstartdate:
+                              type: datetime
+                              label: PLUGIN_SEO.START_DATE
                     header.article_condition:
                       type: conditional
                       condition: "config.plugins.seo.article ? 'true' : 'false'"

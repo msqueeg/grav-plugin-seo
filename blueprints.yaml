@@ -75,6 +75,16 @@ form:
                 0: PLUGIN_ADMIN.DISABLED
               validate:
                 type: bool
+            jobpost:
+              type: toggle
+              label: Enable JobPosting Microdata
+              highlight: 1
+              default: 1
+              options:
+                1: PLUGIN_ADMIN.ENABLED
+                0: PLUGIN_ADMIN.DISABLED
+              validate:
+                type: bool
             event:
               type: toggle
               label: Enable Event Microdata
