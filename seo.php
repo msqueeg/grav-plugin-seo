@@ -639,6 +639,154 @@ class seoPlugin extends Plugin
                   ];
        }
         }
+     if (property_exists($page->header(),'jobpostenabled')){
+        if(isset($page->header()->jobpost['title'])){
+          $JPtitle = $page->header()->jobpost['title'];
+        } else {
+          $JPtitle = $page->title();
+        }
+        if($page->header()->jobpostenabled and $this->config['plugins']['seo']['jobpost']) {
+          $microdata['jobposting'] = [
+            //build out microdata
+            '@context' => 'http://schema.org',
+            '@type' => 'JobPosting',
+            'title' => $JPtitle,
+          ];
+          //'description' => '',
+        if (isset($page->header()->jobpost['description'])) {
+            $microdata['jobposting']['description'] = $page->header()->jobpost['description'];
+           }
+           else {
+             $microdata['jobposting']['description'] = substr($content,0,140); 
+           };
+          //'datePosted'
+        if (isset($page->header()->jobpost['dateposted'])){
+          $microdata['jobposting']['datePosted'] = @date("c", $page->header()->jobpost['dateposted']);
+        }
+          //'validThrough' => @date("c", $page->date()),
+        if (isset($page->header()->jobpost['validthrough'])){
+          $microdata['jobposting']['validThrough'] = @date("c", $page->header()->jobpost['validthrough']);
+        }
+          //'employmentType' => '',
+        if (isset($page->header()->jobpost['employmenttype'])){
+          $microdata['jobposting']['employmentType'] = $page->header()->jobpost['employmenttype'];
+        }
+          //hiring organization options
+          //hardware
+        if (isset($page->header()->jobpost['hiringorg']) && $page->header()->jobpost['hiringorg'] == 'hardware' ) {
+          $microdata['jobposting']['hiringOrganization'] = [
+            '@type' => 'Organization',
+            'name' => 'Hartville Hardware and Lumber',
+            'sameAs' => 'https://www.hartvillehardware.com',
+            'logo' => 'https://res.cloudinary.com/hartville-hardware/image/upload/f_auto,q_auto,c_scale,h_96/graydian/Hardware_Lumber_Logo_EPS_Center_Heart-01.png'
+          ];
+        }
+        //hartville kitchen
+        if (isset($page->header()->jobpost['hiringorg']) && $page->header()->jobpost['hiringorg'] == 'kitchen' ) {
+          $microdata['jobposting']['hiringOrganization'] = [
+            '@type' => 'Organization',
+            'name' => 'Hartville Kitchen Restaurant and Bakery',
+            'sameAs' => 'https://www.hartvillekitchen.com/',
+            'logo' => 'https://res.cloudinary.com/hartville-hardware/image/upload/c_scale,f_auto,h_85,q_auto,w_85/v1569945219/marketing/events/HK-logo-min.svg'
+          ];
+        }
+        //hartville collectibles
+        if (isset($page->header()->jobpost['hiringorg']) && $page->header()->jobpost['hiringorg'] == 'collect' ) {
+          $microdata['jobposting']['hiringOrganization'] = [
+            '@type' => 'Organization',
+            'name' => 'Hartville Collectibles',
+            'sameAs' => 'https://hartvillecollectibles.com/',
+            'logo' => 'https://res.cloudinary.com/hartville-hardware/image/upload/c_scale,f_auto,h_85,q_auto,w_85/v1569945199/marketing/events/HC-logo-min.s'
+          ];
+        }
+        //hartville marketplace
+        if (isset($page->header()->jobpost['hiringorg']) && $page->header()->jobpost['hiringorg'] == 'market' ) {
+          $microdata['jobposting']['hiringOrganization'] = [
+            '@type' => 'Organization',
+            'name' => 'Hartville Marketplace and Fleamarket',
+            'sameAs' => 'https://hartvillemarketplace.com/',
+            'logo' => 'https://res.cloudinary.com/hartville-hardware/image/upload/c_scale,f_auto,h_85,q_auto,w_85/v1569945225/marketing/events/HMP-logo-min.svg'
+          ];
+        }
+          //job locations
+          //hardware
+        if (isset($page->header()->jobpost['joblocation']) && $page->header()->jobpost['hiringorg'] == 'hardware' ) {
+          $microdata['jobposting']['jobLocation'] = [
+            '@type' => 'Place',
+            'address' => [
+              'streetAddress' => '1315 Edison St. NW',
+              'addressLocality' => 'Hartville',
+              'addressRegion' => 'OH',
+              'postalCode' => '44632',
+              'addressCountry' => 'US'
+             ]
+          ];
+        }
+          //kitchen
+        if (isset($page->header()->jobpost['joblocation']) && $page->header()->jobpost['joblocation'] == 'collect' ) {
+          $microdata['jobposting']['jobLocation'] = [
+            '@type' => 'Place',
+            'address' => [
+              'streetAddress' => '1015 Edison St. NW',
+              'addressLocality' => 'Hartville',
+              'addressRegion' => 'OH',
+              'postalCode' => '44632',
+              'addressCountry' => 'US'
+             ]
+          ];
+        }
+          //collect
+        if (isset($page->header()->jobpost['joblocation']) && $page->header()->jobpost['joblocation'] == 'collect' ) {
+          $microdata['jobposting']['jobLocation'] = [
+            '@type' => 'Place',
+            'address' => [
+              'streetAddress' => '1015 Edison St. NW',
+              'addressLocality' => 'Hartville',
+              'addressRegion' => 'OH',
+              'postalCode' => '44632',
+              'addressCountry' => 'US'
+             ]
+          ];
+        }
+          //market
+        if (isset($page->header()->jobpost['joblocation']) && $page->header()->jobpost['joblocation'] == 'market' ) {
+          $microdata['jobposting']['jobLocation'] = [
+            '@type' => 'Place',
+            'address' => [
+              'streetAddress' => '1289 Edison St. NW',
+              'addressLocality' => 'Hartville',
+              'addressRegion' => 'OH',
+              'postalCode' => '44632',
+              'addressCountry' => 'US'
+             ]
+          ];
+        }
+
+        if(isset($page->header()->jobpost['basesalaryrate'])){
+          $unitText = $page->header()->jobpost['basesalaryrate'];
+        } else {
+          $unitText = 'HOUR';
+        }
+        //'baseSalary' => '',
+        if (isset($page->header()->jobpost['basesalaryamnt'])){
+          $microdata['jobposting']['baseSalary'] = [
+            '@type' => 'MonetaryAmount',
+            'currency' => 'USD',
+            'value' => [
+              '@type' => 'QuantitativeValue',
+              'value' => $page->header()->jobpost['basesalaryamnt'],
+              'unitText' => $unitText
+            ]
+          ];
+        }
+           //'jobStartDate' => ''
+        if (isset($page->header()->jobpost['jobstartdate'])){
+          $microdata['jobposting']['jobStartDate'] = @date("c", $page->header()->jobpost['jobstartdate']);
+        }
+
+        }
+        
+     }
      if (property_exists($page->header(),'articleenabled')){
             if (isset($page->header()->article['headline'])){
                $headline =  $page->header()->article['headline'];
