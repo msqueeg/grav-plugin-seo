@@ -144,7 +144,7 @@ form:
                             header.jobpost.employmenttype:
                               type: select
                               options:
-                                '':PLUGIN_SEO.JOBPOST_PLEASE
+                                'null' : PLUGIN_SEO.JOBPOST_PLEASE
                                 'full-time': PLUGIN_SEO.JOBPOST_FULLTIME
                                 'part-time': PLUGIN_SEO.JOBPOST_PARTTIME
                                 'seasonal': PLUGIN_SEO.JOBPOST_SEASONAL
@@ -153,7 +153,7 @@ form:
                             header.jobpost.hiringorg:
                               type: select
                               options: 
-                                '':PLUGIN_SEO.JOBPOST_PLEASE
+                                'null' : PLUGIN_SEO.JOBPOST_PLEASE
                                 'hardware' : PLUGIN_SEO.JOBPOST_HH
                                 'kitchen' : PLUGIN_SEO.JOBPOST_HK
                                 'collect' : PLUGIN_SEO.JOBPOST_HC
@@ -162,7 +162,7 @@ form:
                             header.jobpost.joblocation:
                               type: select
                               options:
-                                '':PLUGIN_SEO.JOBPOST_PLEASE
+                                'null' : PLUGIN_SEO.JOBPOST_PLEASE
                                 'hardware' : PLUGIN_SEO.JOBPOST_HH
                                 'kitchen' : PLUGIN_SEO.JOBPOST_HK
                                 'collect' : PLUGIN_SEO.JOBPOST_HC
@@ -171,7 +171,6 @@ form:
                             header.jobpost.basesalaryrate:
                               type: select
                               options:
-                                '':PLUGIN_SEO.JOBPOST_PLEASE
                                 'HOUR': PLUGIN_SEO.JOBPOST_HOUR
                                 'YEAR': PLUGIN_SEO.JOBPOST_YEAR
                               field_classes: basesalaryrate
