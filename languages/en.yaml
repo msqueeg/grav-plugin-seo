@@ -137,3 +137,6 @@ PLUGIN_SEO:
   JOBPOST_AMNT: "Dollar amount"
   START_DATE: "Starting Date for job"
   JOBPOST_PLEASE: "Please Select an option"
+  EMPLOYMENTTYPE: "Employment Type"
+  HIRINGORG: "Hiring org / location"
+  BASESALARY: "Hourly/Salary"

@@ -142,6 +142,7 @@ form:
                               type: datetime
                               label: PLUGIN_SEO.VALID_THROUGH
                             header.jobpost.employmenttype:
+                              label: PLUGIN_SEO.EMPLOYMENTTYPE
                               type: select
                               options:
                                 'null' : PLUGIN_SEO.JOBPOST_PLEASE
@@ -151,6 +152,7 @@ form:
                                 'contract': PLUGIN_SEO.JOBPOST_CONTRACT
                               field_classes: employmenttype
                             header.jobpost.hiringorg:
+                              label: PLUGIN_SEO.HIRINGORG
                               type: select
                               options: 
                                 'null' : PLUGIN_SEO.JOBPOST_PLEASE
@@ -160,6 +162,7 @@ form:
                                 'market' : PLUGIN_SEO.JOBPOST_HMP
                               field_classes: hiringorg
                             header.jobpost.joblocation:
+                              label: PLUGIN_SEO.HIRINGORG
                               type: select
                               options:
                                 'null' : PLUGIN_SEO.JOBPOST_PLEASE
@@ -169,6 +172,7 @@ form:
                                 'market' : PLUGIN_SEO.JOBPOST_HMP
                               field_classes: joblocation
                             header.jobpost.basesalaryrate:
+                              label: PLUGIN_SEO.BASESALARY
                               type: select
                               options:
                                 'HOUR': PLUGIN_SEO.JOBPOST_HOUR
